@@ -1,11 +1,11 @@
 # Distributed Systems
 Distributed Systems AGH course 
 
-# Chat - Aplikacja czatu z obsługą TCP, UDP i multicast
+# Chat - Chat Application with TCP, UDP, and Multicast Support
 
-Aplikacja składa się z serwera i klienta, które umożliwiają komunikację za pomocą trzech protokołów: TCP, UDP oraz multicast.
+The application consists of a server and a client, enabling communication using three protocols: TCP, UDP, and multicast.
 
-## Funkcje:
-- **TCP**: Komunikacja z serwerem, przesyłanie wiadomości do wszystkich klientów.
-- **UDP**: Szybsza komunikacja, idealna do przesyłania danych takich jak ASCII Art.
-- **Multicast**: Wysyłanie wiadomości do grupy multicastowej bez udziału serwera.
+## Features:
+- **TCP**: Communication with the server, broadcasting messages to all clients.
+- **UDP**: Faster communication, ideal for transmitting data such as ASCII Art.
+- **Multicast**: Sending messages to a multicast group without server involvement.
