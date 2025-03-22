@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import socket
 import threading
 
@@ -67,9 +66,6 @@ def main():
 
     # Utwórz UDP socket
     udp_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    # Wymaganie: UDP działa na tym samym porcie co TCP
-    # Jeśli chcesz mieć ten sam port lokalnie, możesz spróbować bindować,
-    # ale w systemach uniemożliwiających dwóm socketom korzystanie z tego samego portu, użyj losowego portu.
     try:
         udp_sock.bind(('', PORT))
     except Exception as e:
