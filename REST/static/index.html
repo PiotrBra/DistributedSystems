@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Info</title>
+</head>
+<body>
+    <h1>Crypto Information</h1>
+
+    <h2>Get Crypto Statistics</h2>
+    <form id="statsForm">
+        <label for="cryptoId">Crypto ID:</label>
+        <input type="text" id="cryptoId" required>
+        <label for="fromDate">From Date (YYYY-MM-DD):</label>
+        <input type="date" id="fromDate" required>
+        <label for="toDate">To Date (YYYY-MM-DD):</label>
+        <input type="date" id="toDate" required>
+        <button type="submit">Get Stats</button>
+    </form>
+    <pre id="statsResult"></pre>
+
+    <h2>Get Crypto News</h2>
+    <form id="newsForm">
+        <label for="newsCryptoId">Crypto name:</label>
+        <input type="text" id="newsCryptoId" required>
+        <button type="submit">Get News</button>
+    </form>
+    <ul id="newsResult"></ul>
+
+    <script>
+        document.getElementById("statsForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const cryptoId = document.getElementById("cryptoId").value;
+            const fromDate = document.getElementById("fromDate").value;
+            const toDate = document.getElementById("toDate").value;
+
+            const response = await fetch(`/crypto/stats/${cryptoId}?from_date=${fromDate}&to_date=${toDate}`);
+            const data = await response.json();
+            document.getElementById("statsResult").textContent = JSON.stringify(data, null, 2);
+        });
+
+        document.getElementById("newsForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const cryptoId = document.getElementById("newsCryptoId").value;
+
+            const response = await fetch(`/crypto/news/${cryptoId}`);
+            const data = await response.json();
+
+            const newsList = document.getElementById("newsResult");
+            newsList.innerHTML = "";
+            data.articles.forEach(article => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.href = article.url;
+                a.textContent = article.title;
+                a.target = "_blank";
+                li.appendChild(a);
+                newsList.appendChild(li);
+            });
+        });
+    </script>
+</body>
+</html>
