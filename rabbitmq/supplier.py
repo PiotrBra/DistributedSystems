@@ -21,10 +21,10 @@ class Supplier(BasePikaClient):
 
     def _initial_shared_queue_setup(self):
         """
-        Wstępna deklaracja kolejek współdzielonych (np. q_orders_...)
+        Wstępna deklaracja kolejek współdzielonych
         oraz kolejki admina dla tego dostawcy.
         To zapewnia, że kolejki istnieją, zanim konsumenci zaczną się do nich podłączać.
-        Konsumenci również będą je deklarować (idempotentnie) na swoich kanałach.
+        Konsumenci również będą je deklarować na swoich kanałach.
         """
         print(f"[{self.client_name}] Wstępna konfiguracja kolejek...")
         conn, temp_channel = None, None

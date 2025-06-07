@@ -1,4 +1,5 @@
-# ekipa.py
+import pika
+
 from base_client import BasePikaClient
 import uuid
 import json

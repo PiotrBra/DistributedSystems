@@ -32,7 +32,6 @@ class BasePikaClient:
 
     def declare_queue_and_bind_on_channel(self, channel, queue_name, binding_keys, exclusive=False, auto_delete=False, durable=True):
         """Deklaruje kolejkę i jej powiązania na dostarczonym kanale."""
-        # Deklaracja kolejki jest idempotentna
         channel.queue_declare(queue=queue_name, exclusive=exclusive, auto_delete=auto_delete, durable=durable)
 
         if not isinstance(binding_keys, list):
